@@ -26,8 +26,8 @@ const MOVE_ICONS = ["icon-hand-grab-o", "icon-hand-paper-o", "icon-hand-scissors
 
 // Game variables and constants
 const TIE_MSG = ["It's a tie!"];
-const WIN_MSG = ["Nice work!", "Keep it up!"];
-const LOSE_MSG = ["So close!", "Try again!", "Nice try!"];
+const WIN_MSG = ["Great job!", "You won again! Nice work!", "Another win! Keep it up!", "One more point!"];
+const LOSE_MSG = ["You lose. So close!", "Unlucky :(", "Nice try!", "You can still make it!"];
 
 let playerScore = 0;
 let computerScore = 0;
@@ -97,22 +97,23 @@ function playRound() {
     computerMove.className = MOVE_ICONS[computerChoice];
 
     if (playerChoice === computerChoice) {
-        result.textContent = TIE_MSG[Math.floor(Math.random() * TIE_MSG.length)];
+        result.textContent = TIE_MSG[0];
     } else if ((playerChoice === ROCK && computerChoice === SCISSORS) ||
     (playerChoice === PAPER && computerChoice === ROCK) ||
     (playerChoice === SCISSORS && computerChoice === PAPER)) {
-        result.textContent = LOSE_MSG[Math.floor(Math.random() * LOSE_MSG.length)];
-        computerScore++;
-    } else {
-        result.textContent = WIN_MSG[Math.floor(Math.random() * WIN_MSG.length)];
+        result.textContent = WIN_MSG[playerScore];
         playerScore++;
+    } else {
+        result.textContent = LOSE_MSG[computerScore];
+        computerScore++;
     };
 
-    if (round == MAX_ROUNDS + 2) {
+    updateScore();
+    
+    if (playerScore === 5 || computerScore === 5) {
         getWinner();
         return;
     };
-    updateScore();
     
 };
 
