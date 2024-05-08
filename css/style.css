@@ -52,6 +52,11 @@ body {
     font-weight: 600;
 }
 
+.round {
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
 .player {
     text-align: center;
     font-size: 1.1rem;
@@ -127,7 +132,7 @@ footer i {
 }
 
 #newGame:hover {
-    background-color: #575757;
+    background-color: #56b86b;
     color: white;
     transition: background-color 0.2s;
 }
